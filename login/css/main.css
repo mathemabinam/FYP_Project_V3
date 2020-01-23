@@ -158,6 +158,15 @@ iframe {
   color: #999999;
 }
 
+.txt12 {
+  font-family: Poppins-Regular;
+  font-size: 13px;
+  line-height: 1.4;
+  color: #999999;
+  margin-top: 30px;
+  margin-left: 50px;
+}
+
 /*//////////////////////////////////////////////////////////////////
 [ login ]*/
 
@@ -409,12 +418,14 @@ input.input100 {
   font-size: 16px;
   color: #fff;
   line-height: 1.2;
-
+  margin-top: 20px;
   -webkit-transition: all 0.4s;
   -o-transition: all 0.4s;
   -moz-transition: all 0.4s;
   transition: all 0.4s;
 }
+
+
 
 .login100-form-btn:hover {
   background-color: #333333;

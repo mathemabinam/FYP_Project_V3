@@ -1,71 +1,71 @@
-var config = {
-    apiKey: "AIzaSyAhf3_G2ViF_NFdbhE5lQwAHa2OLip8K44",
-    authDomain: "contactform-6c1c7.firebaseapp.com",
-    databaseURL: "https://contactform-6c1c7.firebaseio.com",
-    projectId: "contactform-6c1c7",
-    storageBucket: "contactform-6c1c7.appspot.com",
-    messagingSenderId: "434895775776",
-    appId: "1:434895775776:web:3b8eb2cb1f5f93e6e2b445",
-    measurementId: "G-23CK5X2G4J"
-  };
-  firebase.initializeApp(config);
+// var config = {
+//     apiKey: "AIzaSyAhf3_G2ViF_NFdbhE5lQwAHa2OLip8K44",
+//     authDomain: "contactform-6c1c7.firebaseapp.com",
+//     databaseURL: "https://contactform-6c1c7.firebaseio.com",
+//     projectId: "contactform-6c1c7",
+//     storageBucket: "contactform-6c1c7.appspot.com",
+//     messagingSenderId: "434895775776",
+//     appId: "1:434895775776:web:3b8eb2cb1f5f93e6e2b445",
+//     measurementId: "G-23CK5X2G4J"
+//   };
+//   firebase.initializeApp(config);
    
-  // // Initialize Firebase (ADD YOUR OWN DATA)
-  // var config = {
-  //   apiKey: "xxxxx",
-  //   authDomain: "xxxxx",
-  //   databaseURL: "xxxxx",
-  //   projectId: "xxxxx",
-  //   storageBucket: "xxxxx",
-  //   messagingSenderId: "xxxxx"
-  // };
-  // firebase.initializeApp(config);
+//   // // Initialize Firebase (ADD YOUR OWN DATA)
+//   // var config = {
+//   //   apiKey: "xxxxx",
+//   //   authDomain: "xxxxx",
+//   //   databaseURL: "xxxxx",
+//   //   projectId: "xxxxx",
+//   //   storageBucket: "xxxxx",
+//   //   messagingSenderId: "xxxxx"
+//   // };
+//   // firebase.initializeApp(config);
   
-  // Reference messages collection
-  var messagesRef = firebase.database().ref('messages');
+//   // Reference messages collection
+//   var messagesRef = firebase.database().ref('messages');
   
-  // Listen for form submit
-  document.getElementById('contactForm').addEventListener('submit', submitForm);
+//   // Listen for form submit
+//   document.getElementById('contactForm').addEventListener('submit', submitForm);
   
-  // Submit form
-  function submitForm(e){
-    e.preventDefault();
+//   // Submit form
+//   function submitForm(e){
+//     e.preventDefault();
   
-    // Get values
-    var code = getInputVal('code');
-    var desc = getInputVal('desc');
+//     // Get values
+//     var code = getInputVal('code');
+//     var desc = getInputVal('desc');
 
     
   
-    // Save message
-    saveMessage(code, desc);
+//     // Save message
+//     saveMessage(code, desc);
   
-    // Show alert
-    document.querySelector('.alert').style.display = 'block';
+//     // Show alert
+//     document.querySelector('.alert').style.display = 'block';
   
-    // Hide alert after 3 seconds
-    setTimeout(function(){
-      document.querySelector('.alert').style.display = 'none';
-    },3000);
+//     // Hide alert after 3 seconds
+//     setTimeout(function(){
+//       document.querySelector('.alert').style.display = 'none';
+//     },3000);
   
-    // Clear form
-    document.getElementById('contactForm').reset();
-  }
+//     // Clear form
+//     document.getElementById('contactForm').reset();
+//   }
   
-  // Function to get get form values
-  function getInputVal(id){
-    return document.getElementById(id).value;
-  }
+//   // Function to get get form values
+//   function getInputVal(id){
+//     return document.getElementById(id).value;
+//   }
   
-  // Save message to firebase
-  function saveMessage(code, desc){
-    var newMessageRef = messagesRef.push();
-    newMessageRef.set({
-      code:code,
-      desc:desc,
+//   // Save message to firebase
+//   function saveMessage(code, desc){
+//     var newMessageRef = messagesRef.push();
+//     newMessageRef.set({
+//       code:code,
+//       desc:desc,
     
-      });
-  }
+//       });
+//   }
 
 
 

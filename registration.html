@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>Login</title>
+	<title>Registration</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 <!--===============================================================================================-->	
@@ -39,51 +39,54 @@
 			<div class="wrap-login100">
 				<div class="login100-form-title" style="background-image: url(login/images/bg-01.jpg);">
 					<span class="login100-form-title-1">
-						Sign In
+						Sign Up
 					</span>
 				</div>
 
 				<form class="login100-form validate-form">
-					<div class="wrap-input100 validate-input m-b-26" data-validate="Email is required">
+                    <div class="wrap-input100 validate-input m-b-26" data-validate="First Name is required">
+						<span class="label-input100">First Name</span>
+						<input class="input100" type="text" name="FName" placeholder="Enter First Name" id="fname_field">
+						<span class="focus-input100"></span>
+                    </div>
+                    
+                    <div class="wrap-input100 validate-input m-b-26" data-validate="Last Name is required">
+						<span class="label-input100">Last Name</span>
+						<input class="input100" type="text" name="LName" placeholder="Enter Last Name" id="lname_field">
+						<span class="focus-input100"></span>
+                    </div>
+                    
+                    <div class="wrap-input100 validate-input m-b-26" data-validate="Email is required">
 						<span class="label-input100">E-mail</span>
-						<input class="input100" type="text" name="Email" placeholder="Enter Email" id="email">
+						<input class="input100" type="text" name="Email" placeholder="Enter Email" id="email_field">
+						<span class="focus-input100"></span>
+					</div>
+
+                    <div class="wrap-input100 validate-input m-b-26" data-validate="Mobile number is required">
+						<span class="label-input100">Mobile</span>
+						<input class="input100" type="text" name="Mobile" placeholder="Enter Mobile Number" id="mobile_field">
 						<span class="focus-input100"></span>
 					</div>
 
 					<div class="wrap-input100 validate-input m-b-18" data-validate = "Password is required">
 						<span class="label-input100">Password</span>
-						<input class="input100" type="password" name="pass" placeholder="Enter password" id="pass">
+						<input class="input100" type="password" name="pass" placeholder="Enter password" id="pass_field">
 						<span class="focus-input100"></span>
 					</div>
 
-					<div class="flex-sb-m w-full p-b-30">
-						<div class="contact100-form-checkbox">
-							<input class="input-checkbox100" id="ckb1" type="checkbox" name="remember-me">
-							<label class="label-checkbox100" for="ckb1">
-								Remember me
-							</label>
-						</div>
-
-						<div>
-							<a href="#" class="txt1">
-								Forgot Password?
-							</a>
-						</div>
-					</div>
-
-					<div class="container-login100-form-btn">
-						<button id="btn-login" class="login100-form-btn" type="button">
-							Login
+					<div class="container-registation-form-btn">
+						<button id="btn-register" class="login100-form-btn">
+							Register
 						</button>
-					</div>
-
-					<!-- <div class="txt12">
+                    </div>
+                    
+                    <div class="txt12">
 						<div>
-							<a href="registration.html" class="txt12">
-								Haven't Signed Up?
+							<a href="login.html" class="txt12">
+								Already Have an Account?
 							</a>
 						</div>
-					</div> -->
+					</div>
 				</form>
 			</div>
 		</div>
@@ -110,22 +113,13 @@
 		{
 			window.location.href = "table.html"
 		}
-	});</script>
+	});</script> -->
 
- 
+<!-- The core Firebase JS SDK is always required and must be listed first
 <script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-app.js"></script>
-
 <script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-analytics.js"></script> -->
 
-<script src="js/index.js"></script>
-<script>
-	firebase.auth().onAuthStateChanged(function(user)
-	{
-		if(user){
-			window.location.href = "table.html"
-		}
-	});
-</script>
+
 
 </body>
 </html>
