@@ -3,16 +3,8 @@
 <head>
     <title>Add Design</title>
 </head>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-
-    <script src="https://www.gstatic.com/firebasejs/7.6.2/firebase-app.js"></script>	
-    <script src = "https:/www.gstatic.com/firebasejs/7.6.2/firebase-auth.js"></script>
-    <script src = "https:/www.gstatic.com/firebasejs/7.6.2/firebase-database.js"></script>
-    <script src = "https:/www.gstatic.com/firebasejs/7.6.2/firebase-storage.js"></script>
-</head>
 <body>
     <form  id="addForm">
-                        
         <div class="modal-header">						
             <h4 class="modal-title">Add Design</h4>
         </div>
@@ -20,7 +12,7 @@
             <!-- File Button --> 
             <div class="form-group" >
                 <label>Design Image</label>
-                    <input id="design-img" class="upload-group" type="file">
+                <input id="design-img" class="upload-group" type="file">
             </div>	
             <div class="form-group">
                 <label>Design Code</label>
@@ -28,16 +20,16 @@
             </div>			
             <div class="form-group">
                 <label>Design Name</label>
-                <input type="text" id="design-name" name="code" class="form-control" required>
+                <input type="text" id="design-name" name="name" class="form-control" required>
             </div>
             <div class="form-group">
                 <label>Description</label>
-                <textarea  id="design-desc" required></textarea>
+                <textarea id="design-desc" name="description" required></textarea>
             </div>
             <div class="form-group">
                 <label>Category</label>
                 <div class="custom-dropdown big" id="design-cate">
-                    <select>
+                    <select name="category">
                         <option>Ring</option>
                         <option>Necklace</option>  
                         <option>Braclet</option>
@@ -46,58 +38,57 @@
                     </select>
                 </div>
                 <div id="result">
-
                 </div>
             </div>
-            <!-- <div class="form-group">
-                <label>Image url</label>
-                <input type="text" class="form-control" required>
-            </div>					 -->
         </div>
         <div class="modal-footer">
             <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-            <button id="btn-add" type="button" onclick="uploadFile()">Add</button>
-            <!-- <input id="btn-Add" type="submit" class="btn btn-success" value="Add"> -->
+            <button id="btn-add" type="button">Add</button>
         </div>
     </form>
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.6.2/firebase-app.js"></script>
+    <script src="https:/www.gstatic.com/firebasejs/7.6.2/firebase-auth.js"></script>
+    <script src="https:/www.gstatic.com/firebasejs/7.6.2/firebase-database.js"></script>
+    <script src="https:/www.gstatic.com/firebasejs/7.6.2/firebase-storage.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/node-uuid/1.4.8/uuid.min.js"></script>
+    <script src="js/constants.js"></script>
+    <script src="js/helpers.js"></script>
+    <script src="js/firebaseUtils.js"></script>
+
     <script>
-       var selectedFile;
-        $("#design-img").on("change", function(event)
-		{
-            selectedFile = event.target.files[0];
-        });
+        (function() {
+            const submitBtn = $('#btn-add');
+            const imgInput  = $('#design-img');
+            const addForm   = $('#addForm');
 
-        function uploadFile()
-        {
-            var filename = selectedFile.name
-            var storageRef = firebase.storage().ref('/DesignImages/' + filename);
-            var uploadTask = storageRef.put(selectedFile);
+            const handleSubmit = async () => {
+                const file       = imgInput.prop('files')[0];
+                const formData  = getFormData(addForm);
+                submitBtn.text('Saving...');
 
-            uploadTask.on('state_changed', function(snapshot)
-            {
+                try {
+                    const imgUrl        = await firebaseUtils.uploadFile(
+                                            constants.buckets.DESIGNS,
+                                            file
+                                        );
+                    const data          = await firebaseUtils.insert(
+                                            constants.collections.DESIGNS,
+                                            { ...formData, imgUrl }
+                                        );
 
-            }, function(error)
-            {
-
-            }, function()
-            {
-                var postKey = firebase.database().ref("Designs/").push().key;
-                var downloadURL = uploadTask.snapshot.downloadURL;
-                var updates = {};
-                var postData = {
-                    imgurl: downloadURL,
-                    code: $('#design-code').val(),
-                    name : $('#design-name').val(),
-                    desc : $('#design-desc').val(),
-                    category: $('#design-cate').val(),
-                };
-                updates["/Designs/" + postKey] = postData;
-                firebase.database().ref().update(updates);
-                
-            });
-        }
+                    alert('Added successfully');
+                    addForm.trigger('reset');
+                    console.log('---data---', data);
+                } catch (e) {
+                    alert('Error creating record');
+                    console.log('---error---', e);
+                }
+                submitBtn.text('Add');
+            }
+            submitBtn.on('click', handleSubmit);
+        })();
     </script>
-    <script src="js/index.js"></script>
 </body>
 </html>
