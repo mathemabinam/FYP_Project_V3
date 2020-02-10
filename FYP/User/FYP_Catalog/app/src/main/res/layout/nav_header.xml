@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="182dp"
+    android:background="@color/colorPrimaryDark"
+    android:gravity="bottom"
+    android:padding="16dp"
+    android:theme="@style/ThemeOverlay.AppCompat.Dark">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/userProfileImage"
+        android:layout_width="80dp"
+        android:layout_height="89dp"
+        android:src="@drawable/applogo"
+        android:elevation="2dp"
+        app:civ_border_width="3dp"
+        app:civ_border_color="#539DF8"
+        android:layout_gravity="center"
+        android:layout_marginTop="15dp"
+        />
+
+    <!--<ImageView
+        android:layout_width="75dp"
+        android:layout_height="84dp"
+        android:id="@+id/userProfileImage"
+        android:src="@drawable/ic_person"></ImageView>-->
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="8dp"
+        android:text="Jewelry Catalog"
+        android:id="@+id/userProfileName"
+        android:textSize="20dp"
+        android:fontFamily="monospace"
+        android:layout_gravity="center"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"></TextView>
+
+
+
+</LinearLayout>
