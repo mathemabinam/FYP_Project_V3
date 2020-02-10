@@ -9,6 +9,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import de.hdodenhof.circleimageview.CircleImageView;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -20,8 +21,10 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.example.fyp_catalog.Categories.CategoryRing;
 import com.example.fyp_catalog.Model.Designs;
 import com.example.fyp_catalog.ViewHolder.DesignViewHolder;
+import com.example.fyp_catalog.model3D.home_3D;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.android.material.navigation.NavigationView;
@@ -31,8 +34,9 @@ import com.squareup.picasso.Picasso;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     private DrawerLayout drawer_User;
-    private ImageView img;
-    private DatabaseReference designref;
+    private ImageView img, banner_img;
+    private CircleImageView ring;
+    private DatabaseReference DesignRef;
     private RecyclerView recyclerView;
     RecyclerView.LayoutManager layoutManager;
 
@@ -40,7 +44,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        designref = FirebaseDatabase.getInstance().getReference().child("Designs");
+        DesignRef = FirebaseDatabase.getInstance().getReference().child("designs");
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -61,11 +65,23 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         recyclerView.setLayoutManager(layoutManager);
 
         img = findViewById(R.id.img);
+        banner_img = findViewById(R.id.banner_img);
+        ring = findViewById(R.id.Ring);
 
         img.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, Main2Activity.class);
+                startActivity(intent);
+            }
+        });
+
+
+
+        ring.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, CategoryRing.class);
                 startActivity(intent);
             }
         });
@@ -85,7 +101,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         super.onStart();
 
         FirebaseRecyclerOptions<Designs> options =
-                new FirebaseRecyclerOptions.Builder<Designs>().setQuery(designref, Designs.class)
+                new FirebaseRecyclerOptions.Builder<Designs>().setQuery(DesignRef, Designs.class)
                         .build();
 
         FirebaseRecyclerAdapter<Designs, DesignViewHolder> adapter =

@@ -11,9 +11,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".model_3D.home_3D"></activity>
-        <activity android:name=".model_3D.model_3D_1"></activity>
-        <activity android:name=".Main2Activity"></activity>
+        <activity android:name=".Categories.CategoryRing"></activity>
+        <activity android:name=".model3D.home_3D" />
+        <activity android:name=".model3D.model_3D_1" />
+        <activity android:name=".Main2Activity" />
         <activity
             android:name=".MainActivity"
             android:theme="@style/AppTheme.NoActionBar">

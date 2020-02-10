@@ -7,7 +7,8 @@
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
     tools:context=".MainActivity"
-    tools:openDrawer="start">
+    tools:openDrawer=""
+    android:background="#EBE5C4">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -27,7 +28,8 @@
             android:id="@+id/frame_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/toolbar">
+            android:layout_below="@+id/toolbar"
+            android:background="#EBE5C4">
 
             <RelativeLayout
                 android:id="@+id/relative"
@@ -38,81 +40,172 @@
                     android:id="@+id/banner_img"
                     android:layout_width="match_parent"
                     android:layout_height="150dp"
-                    android:layout_marginBottom="10dp"
+                    android:layout_margin="12dp"
                     android:src="@drawable/banner" />
 
-                <TextView
-                    android:id="@+id/textView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/banner_img"
-                    android:layout_marginStart="8dp"
-                    android:fontFamily="sans-serif-medium"
-                    android:text="Categories"
-                    android:textColor="#0E0E0E" />
-
-
-                <HorizontalScrollView
+                <LinearLayout
                     android:id="@+id/hsv"
-                    android:layout_width="fill_parent"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:fillViewport="true"
-                    android:measureAllChildren="false"
-                    android:layout_below="@+id/textView"
-                    android:scrollbars="none">
+                    android:orientation="vertical"
+                    android:layout_below="@+id/banner_img"
+                    android:background="#EEECE0"
+                    android:layout_marginLeft="12dp"
+                    android:layout_marginRight="12dp"
+                    android:layout_marginBottom="10dp"
+                    >
 
-                    <LinearLayout
+                    <TextView
+                        android:id="@+id/textView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal">
+                        android:layout_marginStart="8dp"
+                        android:fontFamily="sans-serif-medium"
+                        android:text="Categories"
+                        android:textColor="#000000"
+                         />
 
 
-                        <de.hdodenhof.circleimageview.CircleImageView
-                            android:layout_width="70dp"
-                            android:layout_height="70dp"
-                            android:layout_margin="8dp"
-                            android:src="@color/colorPrimaryDark" />
+                    <HorizontalScrollView
+                        android:layout_width="fill_parent"
+                        android:layout_height="110dp"
 
-                        <de.hdodenhof.circleimageview.CircleImageView
-                            android:layout_width="70dp"
-                            android:layout_height="70dp"
-                            android:layout_margin="8dp"
-                            android:src="@color/colorPrimaryDark" />
 
-                        <de.hdodenhof.circleimageview.CircleImageView
-                            android:layout_width="70dp"
-                            android:layout_height="70dp"
-                            android:layout_margin="8dp"
-                            android:src="@color/colorPrimaryDark" />
+                        android:fillViewport="true"
+                        android:measureAllChildren="false"
+                        android:scrollbars="none">
 
-                        <de.hdodenhof.circleimageview.CircleImageView
-                            android:layout_width="70dp"
-                            android:layout_height="70dp"
-                            android:layout_margin="8dp"
-                            android:src="@color/colorPrimaryDark" />
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="horizontal">
 
-                        <de.hdodenhof.circleimageview.CircleImageView
-                            android:layout_width="70dp"
-                            android:layout_height="70dp"
-                            android:layout_margin="8dp"
-                            android:src="@color/colorPrimaryDark" />
-                    </LinearLayout>
-                </HorizontalScrollView>
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:orientation="vertical">
+
+                                <de.hdodenhof.circleimageview.CircleImageView
+                                    android:id="@+id/Ring"
+                                    android:layout_width="70dp"
+                                    android:layout_height="70dp"
+                                    android:layout_margin="8dp"
+                                    android:src="@drawable/categoryring" />
+
+                                <TextView
+                                    android:id="@+id/Cate_ring"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="Ring"
+                                    android:textAlignment="center"
+                                    android:textSize="16dp"
+                                    android:textStyle="bold" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:orientation="vertical">
+
+                                <de.hdodenhof.circleimageview.CircleImageView
+                                    android:layout_width="70dp"
+                                    android:layout_height="70dp"
+                                    android:layout_margin="8dp"
+                                    android:src="@drawable/categorybracelet" />
+
+                                <TextView
+                                    android:id="@+id/Cate_bracelet"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="Bracelet"
+                                    android:textAlignment="center"
+                                    android:textSize="16dp"
+                                    android:textStyle="bold" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:orientation="vertical">
+
+                                <de.hdodenhof.circleimageview.CircleImageView
+                                    android:layout_width="70dp"
+                                    android:layout_height="70dp"
+                                    android:layout_margin="8dp"
+
+                                    android:src="@drawable/categorynecklace" />
+
+                                <TextView
+                                    android:id="@+id/Cate_necklace"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="Necklace"
+                                    android:textAlignment="center"
+                                    android:textSize="16dp"
+                                    android:textStyle="bold" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:orientation="vertical">
+
+                                <de.hdodenhof.circleimageview.CircleImageView
+                                    android:layout_width="70dp"
+                                    android:layout_height="70dp"
+                                    android:layout_margin="8dp"
+                                    android:src="@drawable/categoryearring" />
+
+                                <TextView
+                                    android:id="@+id/Cate_earring"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="Ear Ring"
+                                    android:textAlignment="center"
+                                    android:textSize="16dp"
+                                    android:textStyle="bold" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:orientation="vertical">
+
+                                <de.hdodenhof.circleimageview.CircleImageView
+                                    android:layout_width="70dp"
+                                    android:layout_height="70dp"
+                                    android:layout_margin="8dp"
+                                    android:src="@drawable/categorylocket" />
+
+                                <TextView
+                                    android:id="@+id/Cate_locket"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="Locket"
+                                    android:textAlignment="center"
+                                    android:textSize="16dp"
+                                    android:textStyle="bold" />
+                            </LinearLayout>
+                        </LinearLayout>
+                    </HorizontalScrollView>
+                </LinearLayout>
+
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/recycleview"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/hsv" />
+
                 <ImageView
+                    android:id="@+id/img"
                     android:layout_width="match_parent"
                     android:layout_height="150dp"
-                    android:id="@+id/img"
-                    android:src="@color/colorPrimaryDark"
-                    android:layout_below="@+id/recycleview" />
+                    android:layout_below="@+id/recycleview"
+                    android:src="@drawable/banner2"
+                    android:layout_margin="12dp"/>
             </RelativeLayout>
 
         </FrameLayout>
-
 
 
     </RelativeLayout>
