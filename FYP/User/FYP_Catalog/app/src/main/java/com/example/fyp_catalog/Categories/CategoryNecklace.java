@@ -23,7 +23,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.squareup.picasso.Picasso;
 
-public class CategoryRing extends AppCompatActivity {
+public class CategoryNecklace extends AppCompatActivity {
     private RecyclerView recyclerView;
     private DatabaseReference DesignRef;
     RecyclerView.LayoutManager layoutManager;
@@ -31,16 +31,16 @@ public class CategoryRing extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_category_ring);
+        setContentView(R.layout.activity_category_necklace);
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle("Rings");
+        getSupportActionBar().setTitle("Necklace");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         DesignRef = FirebaseDatabase.getInstance().getReference().child("designs");
 
-        recyclerView = findViewById(R.id.recycleView_ring);
+        recyclerView = findViewById(R.id.recycleView_necklace);
         recyclerView.setHasFixedSize(true);
         layoutManager = new GridLayoutManager(this, 1);
         /*layoutManager = new LinearLayoutManager(this);*/
@@ -60,7 +60,7 @@ public class CategoryRing extends AppCompatActivity {
                 new FirebaseRecyclerAdapter<Designs, DesignViewHolder>(options) {
                     @Override
                     protected void onBindViewHolder(@NonNull DesignViewHolder holder, int position, @NonNull final Designs model) {
-                        if (model.getCategory().equalsIgnoreCase("Ring")) {
+                        if (model.getCategory().equalsIgnoreCase("Necklace")) {
                             holder.designName.setText(model.getName());
                             holder.designDesc.setText(model.getDescription());
                             holder.designCategory.setText(model.getCategory());
@@ -70,7 +70,7 @@ public class CategoryRing extends AppCompatActivity {
                                 @Override
                                 public void onClick(View view) {
 
-                                    Intent intent = new Intent(CategoryRing.this, DesignDescription.class);
+                                    Intent intent = new Intent(CategoryNecklace.this, DesignDescription.class);
                                     intent.putExtra("code", model.getCode());
                                     startActivity(intent);
                                 }
@@ -93,4 +93,3 @@ public class CategoryRing extends AppCompatActivity {
         adapter.startListening();
     }
 }
-

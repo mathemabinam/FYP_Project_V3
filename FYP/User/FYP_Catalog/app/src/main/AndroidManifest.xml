@@ -11,10 +11,30 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Categories.CategoryRing"></activity>
-        <activity android:name=".model3D.home_3D" />
-        <activity android:name=".model3D.model_3D_1" />
-        <activity android:name=".Main2Activity" />
+        <activity android:name=".model3D.second_model"></activity>
+        <activity android:name=".DesignDescription" />
+        <activity
+            android:name=".Categories.CategoryLocket"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".Categories.CategoryEarring"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".Categories.CategoryNecklace"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".Categories.CategoryBracelet"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".Categories.CategoryRing"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".model3D.home_3D"
+            android:parentActivityName=".MainActivity" />
+        <activity android:name=".model3D.first_model" />
+        <activity
+            android:name=".model_2D.DesignHome"
+            android:parentActivityName=".MainActivity" />
         <activity
             android:name=".MainActivity"
             android:theme="@style/AppTheme.NoActionBar">

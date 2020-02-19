@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Categories.CategoryRing"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:context=".model_2D.DesignHome">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
@@ -15,12 +15,13 @@
         android:elevation="4dp"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-         />
+        />
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycleview"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/recycleView_ring"
-        />
+        android:layout_height="match_parent">
+
+    </androidx.recyclerview.widget.RecyclerView>
 
 </LinearLayout>

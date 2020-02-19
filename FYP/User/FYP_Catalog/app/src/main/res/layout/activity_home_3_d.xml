@@ -14,7 +14,7 @@
         android:elevation="4dp"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-        app:title="3D Designs" />
+        />
 
     <androidx.cardview.widget.CardView
         android:id="@+id/card1"
@@ -32,15 +32,16 @@
         <ImageView
             android:id="@+id/image1"
             android:layout_width="match_parent"
-            android:layout_height="150dp"
-            android:src="@color/colorAccent"
+            android:layout_height="170dp"
+            android:src="@drawable/ring1"
             />
 
         <TextView
             android:id="@+id/text1"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="text1"
+            android:text="Diamond Ring"
+            android:paddingVertical="@dimen/cardview_default_elevation"
             android:textSize="18dp"
             android:textStyle="bold"
             android:textAlignment="center"

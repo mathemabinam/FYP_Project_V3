@@ -6,25 +6,27 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import de.hdodenhof.circleimageview.CircleImageView;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.Toast;
 
+import com.example.fyp_catalog.Categories.CategoryBracelet;
+import com.example.fyp_catalog.Categories.CategoryEarring;
+import com.example.fyp_catalog.Categories.CategoryLocket;
+import com.example.fyp_catalog.Categories.CategoryNecklace;
 import com.example.fyp_catalog.Categories.CategoryRing;
 import com.example.fyp_catalog.Model.Designs;
 import com.example.fyp_catalog.ViewHolder.DesignViewHolder;
 import com.example.fyp_catalog.model3D.home_3D;
+import com.example.fyp_catalog.model_2D.DesignHome;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.android.material.navigation.NavigationView;
@@ -35,7 +37,7 @@ import com.squareup.picasso.Picasso;
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     private DrawerLayout drawer_User;
     private ImageView img, banner_img;
-    private CircleImageView ring;
+    private CircleImageView ring, bracelet, necklace, earring, locket;
     private DatabaseReference DesignRef;
     private RecyclerView recyclerView;
     RecyclerView.LayoutManager layoutManager;
@@ -61,27 +63,70 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         recyclerView = findViewById(R.id.recycleview);
         recyclerView.setHasFixedSize(true);
-        layoutManager = new LinearLayoutManager(this);
+        /*layoutManager = new LinearLayoutManager(this);*/
+        layoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
         recyclerView.setLayoutManager(layoutManager);
 
         img = findViewById(R.id.img);
         banner_img = findViewById(R.id.banner_img);
         ring = findViewById(R.id.Ring);
+        bracelet = findViewById(R.id.Bracelet);
+        necklace = findViewById(R.id.Necklace);
+        earring = findViewById(R.id.Earring);
+        locket = findViewById(R.id.Locket);
 
         img.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, Main2Activity.class);
+                Intent intent = new Intent(MainActivity.this, DesignHome.class);
                 startActivity(intent);
             }
         });
 
-
+        banner_img.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, home_3D.class);
+                startActivity(intent);
+            }
+        });
 
         ring.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, CategoryRing.class);
+                startActivity(intent);
+            }
+        });
+
+        bracelet.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, CategoryBracelet.class);
+                startActivity(intent);
+            }
+        });
+
+        earring.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, CategoryEarring.class);
+                startActivity(intent);
+            }
+        });
+
+        necklace.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, CategoryNecklace.class);
+                startActivity(intent);
+            }
+        });
+
+        locket.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, CategoryLocket.class);
                 startActivity(intent);
             }
         });
