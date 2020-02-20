@@ -3,6 +3,7 @@ package com.example.fyp_catalog.model_2D;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -41,7 +42,9 @@ public class DesignHome extends AppCompatActivity {
 
         recyclerView = findViewById(R.id.recycleview);
         recyclerView.setHasFixedSize(true);
-        layoutManager = new LinearLayoutManager(this);
+        layoutManager = new GridLayoutManager(this, 2);
+        /*layoutManager = new LinearLayoutManager(this);
+         layoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);*/
         recyclerView.setLayoutManager(layoutManager);
     }
 
@@ -59,7 +62,6 @@ public class DesignHome extends AppCompatActivity {
                     @Override
                     protected void onBindViewHolder(@NonNull DesignViewHolder holder, int position, @NonNull final Designs model) {
                         holder.designName.setText(model.getName());
-                        holder.designDesc.setText(model.getDescription());
                         holder.designCategory.setText(model.getCategory());
                         Picasso.get().load(model.getImgUrl()).into(holder.designImage);
 
@@ -68,7 +70,7 @@ public class DesignHome extends AppCompatActivity {
                             public void onClick(View view) {
 
                                 Intent intent = new Intent(DesignHome.this, DesignDescription.class);
-                                intent.putExtra("code", model.getCode());
+                                intent.putExtra("id", model.getId());
                                 startActivity(intent);
                             }
                         });

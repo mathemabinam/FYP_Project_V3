@@ -16,6 +16,7 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 
 import com.example.fyp_catalog.Categories.CategoryBracelet;
@@ -24,6 +25,7 @@ import com.example.fyp_catalog.Categories.CategoryLocket;
 import com.example.fyp_catalog.Categories.CategoryNecklace;
 import com.example.fyp_catalog.Categories.CategoryRing;
 import com.example.fyp_catalog.Model.Designs;
+import com.example.fyp_catalog.ViewHolder.DesignHomeViewHolder;
 import com.example.fyp_catalog.ViewHolder.DesignViewHolder;
 import com.example.fyp_catalog.model3D.home_3D;
 import com.example.fyp_catalog.model_2D.DesignHome;
@@ -38,6 +40,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private DrawerLayout drawer_User;
     private ImageView img, banner_img;
     private CircleImageView ring, bracelet, necklace, earring, locket;
+    private Button view_btn;
     private DatabaseReference DesignRef;
     private RecyclerView recyclerView;
     RecyclerView.LayoutManager layoutManager;
@@ -74,6 +77,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         necklace = findViewById(R.id.Necklace);
         earring = findViewById(R.id.Earring);
         locket = findViewById(R.id.Locket);
+        view_btn = findViewById(R.id.view_btn);
 
         img.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -130,6 +134,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 startActivity(intent);
             }
         });
+
+        view_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, DesignHome.class);
+                startActivity(intent);
+            }
+        });
     }
 
     @Override
@@ -149,26 +161,23 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 new FirebaseRecyclerOptions.Builder<Designs>().setQuery(DesignRef, Designs.class)
                         .build();
 
-        FirebaseRecyclerAdapter<Designs, DesignViewHolder> adapter =
-                new FirebaseRecyclerAdapter<Designs, DesignViewHolder>(options) {
+        FirebaseRecyclerAdapter<Designs, DesignHomeViewHolder> adapter =
+                new FirebaseRecyclerAdapter<Designs, DesignHomeViewHolder>(options) {
 
 
                     @Override
-                    protected void onBindViewHolder(@NonNull DesignViewHolder holder, int position, @NonNull final Designs model) {
-                        holder.designName.setText(model.getName());
-                        holder.designDesc.setText(model.getDescription());
-                        holder.designCategory.setText(model.getCategory());
-                        Picasso.get().load(model.getImgUrl()).into(holder.designImage);
+                    protected void onBindViewHolder(@NonNull DesignHomeViewHolder holder, int position, @NonNull final Designs model) {
+                        holder.designHomeName.setText(model.getName());
+                        Picasso.get().load(model.getImgUrl()).into(holder.designHomeImage);
 
 
-                        holder.cardView.setOnClickListener(new View.OnClickListener() {
+                        holder.homeCardView.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View view) {
 
-                                /*Intent intent = new Intent(MainActivity.this, AdminMaintainProductsActivity.class);
-                                intent.putExtra("pid", model.getPid());
+                                Intent intent = new Intent(MainActivity.this, DesignHome.class);
+                                intent.putExtra("id", model.getId());
                                 startActivity(intent);
-                                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);*/
                             }
 
 
@@ -178,9 +187,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
                     @NonNull
                     @Override
-                    public DesignViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-                        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.design_layout, parent, false);
-                        DesignViewHolder holder = new DesignViewHolder(view);
+                    public DesignHomeViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+                        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.design_home_layout, parent, false);
+                        DesignHomeViewHolder holder = new DesignHomeViewHolder(view);
                         return holder;
                     }
                 };

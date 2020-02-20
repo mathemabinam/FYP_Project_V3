@@ -71,7 +71,7 @@ public class CategoryEarring extends AppCompatActivity {
                                 public void onClick(View view) {
 
                                     Intent intent = new Intent(CategoryEarring.this, DesignDescription.class);
-                                    intent.putExtra("code", model.getCode());
+                                    intent.putExtra("id", model.getId());
                                     startActivity(intent);
                                 }
                             });

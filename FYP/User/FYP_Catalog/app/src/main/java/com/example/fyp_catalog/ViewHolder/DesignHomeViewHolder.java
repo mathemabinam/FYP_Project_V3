@@ -11,20 +11,18 @@ import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
-public class DesignViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-
-    public TextView designName, designCategory, designDesc;
-    public ImageView designImage;
+public class DesignHomeViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
+    public TextView designHomeName;
+    public ImageView designHomeImage;
     public ItemClickListener listener;
-    public CardView cardView;
+    public CardView homeCardView;
 
-    public DesignViewHolder(@NonNull View itemView) {
+    public DesignHomeViewHolder(@NonNull View itemView) {
         super(itemView);
 
-        designImage = itemView.findViewById(R.id.design_image);
-        designName = itemView.findViewById(R.id.design_name);
-        designCategory = itemView.findViewById(R.id.design_category);
-        cardView = itemView.findViewById(R.id.design_CardView);
+        designHomeImage = itemView.findViewById(R.id.design_home_image);
+        designHomeName = itemView.findViewById(R.id.design_home_name);
+        homeCardView = itemView.findViewById(R.id.design_home_Cardview);
     }
 
     public void setItemClickListener(ItemClickListener listener){
@@ -36,4 +34,6 @@ public class DesignViewHolder extends RecyclerView.ViewHolder implements View.On
     public void onClick(View view) {
         listener.onClick(view, getAdapterPosition(),false);
     }
+
+
 }

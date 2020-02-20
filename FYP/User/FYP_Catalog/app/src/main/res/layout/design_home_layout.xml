@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="110dp"
+    android:layout_height="150dp"
+    android:layout_margin="10dp"
+    app:cardElevation="15dp"
+    android:background="#99686565"
+    android:id="@+id/design_home_Cardview">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="left">
+
+        <ImageView
+            android:id="@+id/design_home_image"
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+
+            />
+
+        <TextView
+            android:id="@+id/design_home_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Product Name"
+            android:textAlignment="center"
+            android:hint="sadfasfas"
+            android:textColor="#806C07"
+            android:textSize="12dp"
+            android:layout_below="@+id/design_home_image"
+            android:textStyle="bold"
+            />
+
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>

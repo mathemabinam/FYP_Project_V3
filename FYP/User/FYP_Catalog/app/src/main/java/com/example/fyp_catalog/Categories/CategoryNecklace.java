@@ -62,7 +62,6 @@ public class CategoryNecklace extends AppCompatActivity {
                     protected void onBindViewHolder(@NonNull DesignViewHolder holder, int position, @NonNull final Designs model) {
                         if (model.getCategory().equalsIgnoreCase("Necklace")) {
                             holder.designName.setText(model.getName());
-                            holder.designDesc.setText(model.getDescription());
                             holder.designCategory.setText(model.getCategory());
                             Picasso.get().load(model.getImgUrl()).into(holder.designImage);
 
@@ -71,7 +70,7 @@ public class CategoryNecklace extends AppCompatActivity {
                                 public void onClick(View view) {
 
                                     Intent intent = new Intent(CategoryNecklace.this, DesignDescription.class);
-                                    intent.putExtra("code", model.getCode());
+                                    intent.putExtra("id", model.getId());
                                     startActivity(intent);
                                 }
                             });

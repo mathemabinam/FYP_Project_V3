@@ -18,7 +18,7 @@ import com.squareup.picasso.Picasso;
 
 public class DesignDescription extends AppCompatActivity {
     private ImageView desc_image;
-    private TextView desc_name, desc_description;
+    private TextView desc_code, desc_name, desc_description, desc_cate, desc_metal;
     private String designID = "";
 
     @Override
@@ -31,10 +31,13 @@ public class DesignDescription extends AppCompatActivity {
         getSupportActionBar().setTitle("");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        designID = getIntent().getStringExtra("code");
+        designID = getIntent().getStringExtra("id");
 
+        desc_code = findViewById(R.id.desc_code);
         desc_image = findViewById(R.id.desc_image);
         desc_name = findViewById(R.id.desc_name);
+        desc_cate = findViewById(R.id.desc_cate);
+        desc_metal = findViewById(R.id.desc_metal);
         desc_description = findViewById(R.id.desc_description);
 
         getDesignDesc(designID);
@@ -49,8 +52,11 @@ public class DesignDescription extends AppCompatActivity {
                if (dataSnapshot.exists()){
                    Designs designs = dataSnapshot.getValue(Designs.class);
 
+                   desc_code.setText(designs.getCode());
                    desc_name.setText(designs.getName());
+                   desc_cate.setText(designs.getCategory());
                    desc_description.setText(designs.getDescription());
+                   desc_metal.setText(designs.getMetal());
                    Picasso.get().load(designs.getImgUrl()).into(desc_image);
                }
            }

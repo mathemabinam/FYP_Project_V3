@@ -29,7 +29,7 @@
                 android:text="Product Name"
                 android:textAlignment="center"
                 android:hint="sadfasfas"
-                android:textColor="#9E2523"
+                android:textColor="#806C07"
                 android:textSize="18dp"
                 android:layout_below="@+id/design_image"
                 android:textStyle="bold" />
@@ -40,22 +40,12 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/design_name"
                 android:layout_marginTop="2dp"
-                android:text="Product Price"
+                android:text="Product Category"
                 android:textAlignment="center"
-                android:textColor="#9E2523"
+                android:textColor="#806C07"
                 android:textSize="16dp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/design_description"
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:layout_below="@id/design_category"
-                android:text="Product Description"
-                android:textAlignment="center"
-                android:textColor="#9E2523"
-                android:textSize="14dp"
-                android:textStyle="italic" />
+                android:textStyle="bold"
+                android:layout_marginBottom="20dp"/>
 
         </RelativeLayout>
 
